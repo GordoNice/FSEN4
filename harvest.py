@@ -87,6 +87,7 @@ def get_args():
 		nargs='+',
 		default=None)
 
+	# TODO noprint version
 	# parser.add_argument(
 	# 	'-nh',
 	# 	'--nohup',
