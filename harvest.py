@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import subprocess
+from subprocess import PIPE
 import glob
 import os
 
@@ -167,7 +168,7 @@ def ProcessFLUKA(
 	cmd = f'{binpath}/{score}'
 	print(f'Data for unit {unit} is merging...')
 	result = subprocess.run(
-		[cmd], capture_output=True, text=True, input="\n".join(paths))
+		[cmd], stderr=PIPE, stdout=PIPE, input="\n".join(paths).encode())
 
 	# print("stdout:", result.stdout)
 	if not result.stderr:
