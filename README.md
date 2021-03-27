@@ -12,7 +12,7 @@ Author: [_Gordeev Ivan <GN\>_](https://www.researchgate.net/profile/Ivan-Gordeev
 Prerequisites
 --------------
 
-Python 3 and dependencies: **numpy** and **pyTelegramBotAPI** (for telegram notifications).
+Python 3 (tested on 3.6 and 3.7) and dependencies: **numpy** and **pyTelegramBotAPI** (for telegram notifications).
 
 One need to add this line in _.bashrc_ file of home directory:
 
