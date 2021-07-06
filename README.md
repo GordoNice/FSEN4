@@ -110,7 +110,7 @@ To show usage help in command line type:
 
 Suppose, 6 jobs are already running via _FSEN4cli_ tool. If one wants to perform 5 more launches after that with 6 parallel jobs:
 
-> nohup ./automate.py -sn 6 -cn 6 -bn 5 &
+> nohup ./automate.py -sn 6 -cn 6 -bn 5 example.inp &
 
 Where '-sn 6' tells skipping 6 jobs (which are handled by _FSEN4cli_ tool), '-cn 6' - number of parallel jobs in the next batches, '-bn 5' - number of batches. One need to pay attention, that this should be executed in background.
 

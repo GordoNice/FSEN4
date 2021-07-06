@@ -180,12 +180,8 @@ def main():
 	i = 1 + skip_n
 	while i <= (copy_n + skip_n):
 
-		if i < 10:
-			prefix = "0"  # Put '0' if number below 10
-		else:
-			prefix = ""
+		cur_name = f"{inp_name}_{i:02d}.inp"
 
-		cur_name = f"{inp_name}_{prefix}{str(i)}.inp"
 		shutil.copy(f"{inp_name}.inp", cur_name)
 
 		# TODO maybe better algo for seed generation

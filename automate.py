@@ -113,7 +113,7 @@ def main():
 	while True:
 		if args.batchn == 0 and not check_state():
 			# Harvest results from last batch
-			subprocess.call(f'mv *fort* autores', shell=True)
+			subprocess.call('mv *fort* autores', shell=True)
 			exit()
 
 		if check_state():
@@ -125,7 +125,7 @@ def main():
 				skip = args.skipn + args.copyn*(b-1)
 
 			# Harvest results from previous batch
-			subprocess.call(f'mv *fort* autores', shell=True)
+			subprocess.call('mv *fort* autores', shell=True)
 
 			# Execute new script
 			# Script should be in the same directory with FSEN4cli!
