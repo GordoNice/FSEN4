@@ -69,14 +69,11 @@ def get_args():
 
 	# TODO USRBDX and RESNUCLEi scorings
 	# TODO maybe refactor code
-	# parser.add_argument(
-	# 	'-yie',
-	# 	'--usryield',
-	# 	help='Units of output FLUKA fort files with usryield type scoring',
-	# 	metavar='usryield',
-	# 	type=int,
-	# 	nargs='+',
-	# 	default=None)
+	parser.add_argument(
+		'-dtc',
+		'--detect',
+		help='Process DETECT scoring files (*.17 fort files)',
+		action='store_true')
 
 	parser.add_argument(
 		'-bnn',
@@ -98,7 +95,8 @@ def get_args():
 
 	# If no args except input file
 	if args.usrtrack is None and args.usryield is None and args.usrbin is None:
-		parser.error(f'Please provide at least one unit!')
+		if not args.detect:
+			parser.error(f'Please provide at least one unit!')
 
 	args.input = args.input.split(".")[0]  # Get rid of extension
 
@@ -108,7 +106,7 @@ def get_args():
 	else:
 		print(f'Directory {args.binpath} will be used for processing...')
 
-	for score in ['ustsuw', 'usysuw', 'usbsuw']:
+	for score in ['ustsuw', 'usysuw', 'usbsuw', 'detsuw']:
 		if not os.path.isfile(f'{args.binpath}/{score}'):
 			parser.error(
 				f'Tool "{score}" does not exist under {args.binpath}!')
@@ -159,7 +157,8 @@ def ProcessFLUKA(
 	ext = {
 		'ustsuw': 'trk',
 		'usysuw': 'yie',
-		'usbsuw': 'bnn'
+		'usbsuw': 'bnn',
+		'detsuw': 'dtc'
 	}
 
 	paths = get_pathnames(f'{fortpath}/*.{unit}')
@@ -196,6 +195,10 @@ def main():
 				ProcessFLUKA(
 					args.input, args.binpath, args.fortpath, unit, item)
 
+	# Special treat for the DETECT scoring
+	if args.detect:
+		ProcessFLUKA(
+					args.input, args.binpath, args.fortpath, 17, 'detsuw')
 
 if __name__ == '__main__':
 	main()

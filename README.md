@@ -116,4 +116,15 @@ Where '-sn 6' tells skipping 6 jobs (which are handled by _FSEN4cli_ tool), '-cn
 
 All results will be automatically saved in 'autores' directory.
 
+### harvest tool
+
+To process all the results from the terminal:
+
+> ./harvest.py example.inp -trk 21 -yie 22
+
+Here we suppose that all our *fort* files are in the 'autores' folder. We have one usrtrack scorer on the unit 21 and one usryield scorer on the unit 22.
+
+**Not all the scorers are currently available!**
+Use --help to list all the options.
+
 **IMPORTANT**: All the tools should be in the same directory! But it can be called from any path.
