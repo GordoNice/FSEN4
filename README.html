@@ -74,17 +74,14 @@
                 </h3>
               
               <article class="markdown-body entry-content" itemprop="text" id="grip-content">
-                <h1>
-<a id="user-content-fsen4-tools" class="anchor" href="#fsen4-tools" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>FSEN4 tools</strong>
-</h1>
+                <h1><a id="user-content-fsen4-tools" class="anchor" aria-hidden="true" href="#fsen4-tools"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>FSEN4 tools</strong></h1>
 <p>Python tools for <strong>F</strong>LUKA input files with <strong>S</strong>pawn, <strong>E</strong>xecute and <strong>N</strong>otify features (FSEN).
 Allows to spawn <a href="https://fluka.cern/" rel="nofollow">FLUKA</a> input files, execute them and notify by e-mail (or via telegram bot) about run
 state. After completion have a structure like it was done using <a href="http://flair.web.cern.ch/flair/" rel="nofollow">Flair</a>, so user can easily process data using Flair.</p>
 <p>Made with Python 3</p>
 <p>Author: <a href="https://www.researchgate.net/profile/Ivan-Gordeev" rel="nofollow"><em>Gordeev Ivan &lt;GN&gt;</em></a> (<a href="mailto:gordeev@jinr.ru">gordeev@jinr.ru</a>), Dubna, JINR, 2021</p>
-<h2>
-<a id="user-content-prerequisites" class="anchor" href="#prerequisites" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Prerequisites</h2>
-<p>Python 3 and dependencies: <strong>numpy</strong> and <strong>pyTelegramBotAPI</strong> (for telegram notifications).</p>
+<h2><a id="user-content-prerequisites" class="anchor" aria-hidden="true" href="#prerequisites"><span aria-hidden="true" class="octicon octicon-link"></span></a>Prerequisites</h2>
+<p>Python 3 (tested on 3.6 and 3.7) and dependencies: <strong>numpy</strong> and <strong>pyTelegramBotAPI</strong> (for telegram notifications).</p>
 <p>One need to add this line in <em>.bashrc</em> file of home directory:</p>
 <blockquote>
 <p>export FLUKA=~/path_to_bin_directory</p>
@@ -92,8 +89,7 @@ state. After completion have a structure like it was done using <a href="http://
 <p>where <em>path_to_bin_directory</em> is the path to FLUKA <em>bin</em> folder. Another option is to execute this command in terminal directly every time just before script launching.</p>
 <p>Also, by default, script will search custom user executable under <em>PATH_TO_CUSTOM</em> (look at the <em>settings.py</em> file).
 If one has custom executables in another directory, <em>PATH_TO_CUSTOM</em> must be changed accordingly.</p>
-<h2>
-<a id="user-content-info-for-notify-option" class="anchor" href="#info-for-notify-option" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Info for notify option</h2>
+<h2><a id="user-content-info-for-notify-option" class="anchor" aria-hidden="true" href="#info-for-notify-option"><span aria-hidden="true" class="octicon octicon-link"></span></a>Info for notify option</h2>
 <p><em>FSEN4cli</em> tool supports 2 types of notification:</p>
 <ol>
 <li>Via email</li>
@@ -114,10 +110,8 @@ If one has custom executables in another directory, <em>PATH_TO_CUSTOM</em> must
 <p>/bomb</p>
 </blockquote>
 <p>This one stops calculations by executing <em>bomb.sh</em> script (generates <em>fluka.stop</em> files in <em>fluka_*</em> directories)</p>
-<h2>
-<a id="user-content-usage-examples" class="anchor" href="#usage-examples" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage examples</h2>
-<h3>
-<a id="user-content-fsen4cli-tool" class="anchor" href="#fsen4cli-tool" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>FSEN4cli tool</h3>
+<h2><a id="user-content-usage-examples" class="anchor" aria-hidden="true" href="#usage-examples"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage examples</h2>
+<h3><a id="user-content-fsen4cli-tool" class="anchor" aria-hidden="true" href="#fsen4cli-tool"><span aria-hidden="true" class="octicon octicon-link"></span></a>FSEN4cli tool</h3>
 <p>FSEN4cli tool executes FLUKA input files via cli and notifies about run status (optional).</p>
 <p>To show help in command line type:</p>
 <blockquote>
@@ -152,11 +146,9 @@ If one has custom executables in another directory, <em>PATH_TO_CUSTOM</em> must
 </blockquote>
 <p>nohup command will add all output to <em>nohup.out</em> file and <em>&amp;</em> sign will run script in background. Also, one could press "CTRL + Z" and do: bg (to force program run in background). After that terminal can be closed.</p>
 <p>Otherwise, one should not close the terminal while the script is running.</p>
-<h3>
-<a id="user-content-bomb-feature" class="anchor" href="#bomb-feature" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>bomb feature</h3>
+<h3><a id="user-content-bomb-feature" class="anchor" aria-hidden="true" href="#bomb-feature"><span aria-hidden="true" class="octicon octicon-link"></span></a>bomb feature</h3>
 <p>During every execution, script creates so-called <em>bomb.sh</em> shell script. Execution of this script creates <em>fluka.stop</em> files in every 'fluka_*' directory this way, jobs can be finished correctly earlier.</p>
-<h3>
-<a id="user-content-automate-tool" class="anchor" href="#automate-tool" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>automate tool</h3>
+<h3><a id="user-content-automate-tool" class="anchor" aria-hidden="true" href="#automate-tool"><span aria-hidden="true" class="octicon octicon-link"></span></a>automate tool</h3>
 <p>This tool automates new launches with <em>FSEN4cli</em> tool.</p>
 <p>For example, if one started N parallel jobs of FLUKA via <em>FSEN4cli</em> tool, and he wants to improve statistics by running more jobs just after these N jobs will be done, this tool will be helpful.</p>
 <p>To show usage help in command line type:</p>
@@ -165,10 +157,18 @@ If one has custom executables in another directory, <em>PATH_TO_CUSTOM</em> must
 </blockquote>
 <p>Suppose, 6 jobs are already running via <em>FSEN4cli</em> tool. If one wants to perform 5 more launches after that with 6 parallel jobs:</p>
 <blockquote>
-<p>nohup ./automate.py -sn 6 -cn 6 -bn 5 &amp;</p>
+<p>nohup ./automate.py -sn 6 -cn 6 -bn 5 example.inp &amp;</p>
 </blockquote>
 <p>Where '-sn 6' tells skipping 6 jobs (which are handled by <em>FSEN4cli</em> tool), '-cn 6' - number of parallel jobs in the next batches, '-bn 5' - number of batches. One need to pay attention, that this should be executed in background.</p>
 <p>All results will be automatically saved in 'autores' directory.</p>
+<h3><a id="user-content-harvest-tool" class="anchor" aria-hidden="true" href="#harvest-tool"><span aria-hidden="true" class="octicon octicon-link"></span></a>harvest tool</h3>
+<p>To process all the results from the terminal:</p>
+<blockquote>
+<p>./harvest.py example.inp -trk 21 -yie 22</p>
+</blockquote>
+<p>Here we suppose that all our <em>fort</em> files are in the 'autores' folder. We have one usrtrack scorer on the unit 21 and one usryield scorer on the unit 22.</p>
+<p><strong>Not all the scorers are currently available!</strong>
+Use --help to list all the options.</p>
 <p><strong>IMPORTANT</strong>: All the tools should be in the same directory! But it can be called from any path.</p>
 
               </article>
