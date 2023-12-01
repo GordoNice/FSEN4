@@ -11,7 +11,6 @@ import numpy as np
 import smtplib  # Work with e-mail
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-import telebot  # telegram bot API
 from settings import MAIL, MAILFROM, SERVERNAME, PORTNUMBER, USER_ID, USERNAME
 
 
@@ -303,58 +302,3 @@ def time_convert(s: int):
 
 	return \
 		f'{int(days):02}d-{int(hours):02}h:{int(minutes):02}m:{int(seconds):02}s'
-
-
-def telegram_bot(token: str, input_name: str, start_time, notify=True):
-	# https://docs.aiogram.dev/en/latest/telegram/bot.html # TODO
-	bot = telebot.TeleBot(token, threaded=False)
-
-	if notify:
-		print('Telegram bot is up!')
-		print('CTRL+Z and then bg in console to make it run in background')
-
-	@bot.message_handler(commands=['start', 'help'])
-	def send_welcome(message):
-		# We need to check if we have rights
-		if message.from_user.id == USER_ID\
-			and message.from_user.username == USERNAME:
-			msg = 'Use /status command to get updates on current run\n'
-			msg += 'Use /bomb command to finish all jobs'
-			bot.reply_to(
-				message,
-				msg)
-		else:
-			bot.reply_to(
-				message,
-				'Access denied')
-
-	@bot.message_handler(commands=['status'])
-	def send_welcome(message):
-		if message.from_user.id == USER_ID\
-			and message.from_user.username == USERNAME:
-			msg = check_state(input_name, start_time)
-			bot.reply_to(
-				message,
-				msg)
-			if msg == 'Nothing is running!':
-				exit()  # cz nothing is running
-		else:
-			bot.reply_to(
-				message,
-				'Access denied')
-
-	@bot.message_handler(commands=['bomb'])
-	def send_welcome(message):
-		if message.from_user.id == USER_ID\
-			and message.from_user.username == USERNAME:
-			subprocess.call("./bomb.sh", shell=True)
-			bot.reply_to(
-				message,
-				'The bomb has been planted!')
-			subprocess.call("rm bomb.sh", shell=True)
-		else:
-			bot.reply_to(
-				message,
-				'Access denied')
-
-	bot.infinity_polling()

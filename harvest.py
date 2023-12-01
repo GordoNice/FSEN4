@@ -84,6 +84,15 @@ def get_args():
 		nargs='+',
 		default=None)
 
+	parser.add_argument(
+		'-rnc',
+		'--rnc',
+		help='Units of output FLUKA fort files with resnuclei type scoring',
+		metavar='rnc',
+		type=int,
+		nargs='+',
+		default=None)
+
 	# TODO noprint version
 	# parser.add_argument(
 	# 	'-nh',
@@ -94,7 +103,8 @@ def get_args():
 	args = parser.parse_args()
 
 	# If no args except input file
-	if args.usrtrack is None and args.usryield is None and args.usrbin is None:
+	if args.usrtrack is None\
+			and args.usryield is None and args.usrbin is None and args.rnc is None:
 		if not args.detect:
 			parser.error(f'Please provide at least one unit!')
 
@@ -106,7 +116,7 @@ def get_args():
 	else:
 		print(f'Directory {args.binpath} will be used for processing...')
 
-	for score in ['ustsuw', 'usysuw', 'usbsuw', 'detsuw']:
+	for score in ['ustsuw', 'usysuw', 'usbsuw', 'detsuw', 'usrsuw']:
 		if not os.path.isfile(f'{args.binpath}/{score}'):
 			parser.error(
 				f'Tool "{score}" does not exist under {args.binpath}!')
@@ -118,7 +128,7 @@ def get_args():
 		print(
 			f'FLUKA fort files from {args.fortpath} directory will be used for processing...')
 
-	for arg in [args.usrtrack, args.usryield, args.usrbin]:
+	for arg in [args.usrtrack, args.usryield, args.usrbin, args.rnc]:
 		if arg is not None:
 			arg.sort()  # sort units
 			for unit in arg:
@@ -158,7 +168,8 @@ def ProcessFLUKA(
 		'ustsuw': 'trk',
 		'usysuw': 'yie',
 		'usbsuw': 'bnn',
-		'detsuw': 'dtc'
+		'detsuw': 'dtc',
+		'usrsuw': 'rnc'
 	}
 
 	paths = get_pathnames(f'{fortpath}/*.{unit}')
@@ -186,7 +197,8 @@ def main():
 	score = {
 		'ustsuw': args.usrtrack,
 		'usysuw': args.usryield,
-		'usbsuw': args.usrbin
+		'usbsuw': args.usrbin,
+		'usrsuw': args.rnc
 	}
 
 	for item in score.keys():

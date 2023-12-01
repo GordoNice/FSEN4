@@ -245,11 +245,6 @@ def main():
 
 	functions.create_bomb()  # create script to stop all jobs
 
-	if args.notifybot:
-		start_time = datetime.now()
-		functions.telegram_bot(
-			args.token, f"{inp_name}.inp", start_time, notify=not args.nohup)
-
 	if args.notifymail:
 
 		functions.send_mail(pids, size_pids, f'{inp_name}.inp', args.password)
